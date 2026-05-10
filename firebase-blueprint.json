@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Complaint": {
+      "title": "Complaint",
+      "description": "User complaint regarding land seizure or displacement",
+      "type": "object",
+      "properties": {
+        "tripleName": { "type": "string", "description": "Magaca saddexan" },
+        "fullName": { "type": "string", "description": "Magaca buuxa" },
+        "phone": { "type": "string", "description": "Taleefanka" },
+        "category": { "type": "string", "enum": ["Barakicin", "Cadaalad Daro", "Shaqo Laga Dhacay", "Dhul Dhaxal ah"] },
+        "tribe": { "type": "string", "description": "Qabiilka" },
+        "complaint": { "type": "string", "description": "Faahfaahinta cabashada" },
+        "status": { "type": "string", "enum": ["pending", "reviewed", "resolved"], "description": "Xaaladda cabashada" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "fileUrl": { "type": "string", "description": "URL-ka faylka la soo gudbiyey" }
+      },
+      "required": ["tripleName", "phone", "category", "complaint", "status", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "System administrators",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["superadmin", "editor"] }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "complaints": {
+      "schema": "Complaint",
+      "description": "Uruurinta cabashooyinka dadweynaha"
+    },
+    "admins": {
+      "schema": "Admin",
+      "description": "Maamulayaasha habka"
+    }
+  }
+}
